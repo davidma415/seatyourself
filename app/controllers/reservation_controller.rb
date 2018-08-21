@@ -1,38 +1,36 @@
 class ReservationController < ApplicationController
+
   def new
-    @user = User.new
+    @reservation = Reservation.new
   end
 
   def create
-    @user = User.new(
-      username: params[:user][:username],
-      name: params[:user][:name],
-      email: params[:user][:email],
-      password: params[:user][:password],
-      password_confirmation: params[:user][:password_confirmation]
+    @reservation = Reservation.new(
+      date: params[:reservation][:date],
+      time: params[:reservation][:time],
+      party_size: params[:reservation][:party_size]
     )
 
-    if @user.save
-      session[:user_id] = @user.id
+    if @reservation.save
+      session[:user_id] = @reservation.id
       redirect_to root_path
     else
-      flash.now[:alert] = @user.errors.full_messages
+      flash.now[:alert] = @reservation.errors.full_messages
       render :new
     end
   end
 
   def edit
-    @user = User.find(params[:id])
+    @reservation = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
-    @user.first_name = params[:user][:first_name]
-    @user.last_name = params[:user][:last_name]
-    @user.email = params[:user][:email]
-    @user.password_digest = params[:user][:password_digest]
+    @reservation = Reservation.find(params[:id])
+    @reservation.date = params[:reservation][:date]
+    @reservation.time = params[:reservation][:time]
+    @reservation.party_size = params[:reservation][:party_size]
 
-    if @user.save
+    if @reservation.save
       redirect_to user_path
     else
       render :edit

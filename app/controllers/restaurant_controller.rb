@@ -1,40 +1,39 @@
 class RestaurantController < ApplicationController
 
   def new
-    @user = User.new
+    @restaurant = Restaurant.new
   end
 
   def create
-    @user = User.new(
-      username: params[:user][:username],
-      name: params[:user][:name],
-      email: params[:user][:email],
-      password: params[:user][:password],
-      password_confirmation: params[:user][:password_confirmation]
+    @restaurant = Restaurant.new(
+      name: params[:restaurant][:name],
+      opening_hour: params[:restaurant][:opening_hour],
+      closing_hour: params[:restaurant][:closing_hour],
+      max_capacity: params[:restaurant][:max_capacity]
     )
 
-    if @user.save
-      session[:user_id] = @user.id
+    if @restaurant.save
+      session[:user_id] = @restaurant.id
       redirect_to root_path
     else
-      flash.now[:alert] = @user.errors.full_messages
+      flash.now[:alert] = @restaurant.errors.full_messages
       render :new
     end
   end
 
   def edit
-    @user = User.find(params[:id])
+    @restaurant = Restaurant.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
-    @user.first_name = params[:user][:first_name]
-    @user.last_name = params[:user][:last_name]
-    @user.email = params[:user][:email]
-    @user.password_digest = params[:user][:password_digest]
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.name = params[:restaurant][:name]
+    @restaurant.opening_hour = params[:restaurant][:opening_hour]
+    @restaurant.closing_hour = params[:restaurant][:closing_hour]
+    @restaurant.max_capacity = params[:restaurant][:max_capacity]
 
-    if @user.save
-      redirect_to user_path
+    if @restaurant.save
+      redirect_to restaurant_path
     else
       render :edit
 
