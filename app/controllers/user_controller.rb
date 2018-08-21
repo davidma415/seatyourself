@@ -23,9 +23,22 @@ class UserController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    @user.first_name = params[:user][:first_name]
+    @user.last_name = params[:user][:last_name]
+    @user.email = params[:user][:email]
+    @user.password_digest = params[:user][:password_digest]
+
+    if @user.save
+      redirect_to user_path
+    else
+      render :edit
+
+
   end
 
 end
