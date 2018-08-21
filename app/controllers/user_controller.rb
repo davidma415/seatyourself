@@ -22,7 +22,10 @@ class UserController < ApplicationController
     end
   end
 
-end
+  def edit
+  end
 
+  def update
+  end
 
 end
