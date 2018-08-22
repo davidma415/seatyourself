@@ -1,21 +1,24 @@
 class ReservationsController < ApplicationController
-
+  before_action :ensure_logged_in, only: [:new, :create, :edit, :update]
   def new
     @reservation = Reservation.new
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   def create
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @reservation = Reservation.new(
       date: params[:reservation][:date],
       time: params[:reservation][:time],
       party_size: params[:reservation][:party_size],
-      user_id: current_user.id
+      user_id: current_user.id,
+      restaurant: @restaurant
     )
 
     if @reservation.save
       redirect_to root_path
     else
-      flash.now[:alert] = @reservation.errors.full_messages
+      flash.now[:notice] = @reservation.errors.full_messages
       render :new
     end
   end
