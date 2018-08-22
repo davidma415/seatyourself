@@ -1,5 +1,9 @@
 <h1>View My Restaurant</h1>
-<%= link_to 'Edit Restaurant', edit_restaurant_path %>
+<% if current_user %>
+  <% if current_user.id == @restaurant.user_id  %>
+    <%= link_to 'Edit Restaurant', edit_restaurant_path %>
+  <% end %>
+<% end %>
 <h4><%= @restaurant.name %></h4>
 <ul>
   <li>Name: <%= @restaurant.name %></li>

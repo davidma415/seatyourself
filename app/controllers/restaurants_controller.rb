@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
-
+  before_action :ensure_logged_in, only: [:new, :create]
+  before_action :verify_owner_of_restaurant, only: [:edit, :update]
   def new
     @restaurant = Restaurant.new
   end
@@ -9,11 +10,11 @@ class RestaurantsController < ApplicationController
       name: params[:restaurant][:name],
       opening_hour: params[:restaurant][:opening_hour],
       closing_hour: params[:restaurant][:closing_hour],
-      max_capacity: params[:restaurant][:max_capacity]
+      max_capacity: params[:restaurant][:max_capacity],
+      user_id: current_user.id
     )
 
     if @restaurant.save
-      session[:user_id] = @restaurant.id
       redirect_to root_path
     else
       flash.now[:alert] = @restaurant.errors.full_messages
@@ -47,5 +48,11 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def verify_owner_of_restaurant
+    unless current_user.id == @restaurant.user_id
+      flash[:notice] = "You do not own this restaurant. Please login as the owner."
+      redirect_to new_session_url
+    end
+  end
 
 end

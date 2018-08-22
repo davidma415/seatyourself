@@ -4,6 +4,6 @@ class Restaurant < ApplicationRecord
   validates_numericality_of :max_capacity, :greater_than => 0
 
   has_many :reservations
-  has_many :users, through: :reservations
+  belongs_to :user
 
 end
