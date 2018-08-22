@@ -22,6 +22,10 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def index
+    @reservation = Reservation.all
+  end
+
   def edit
     @reservation = User.find(params[:id])
   end
