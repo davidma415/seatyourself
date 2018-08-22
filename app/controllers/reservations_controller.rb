@@ -2,6 +2,7 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
+    render :new_restaurant_reservation_path
   end
 
   def create
@@ -34,9 +35,7 @@ class ReservationsController < ApplicationController
       redirect_to user_path
     else
       render :edit
-
-
+    end
   end
-
 
 end
