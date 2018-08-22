@@ -1,0 +1,9 @@
+<h1>View My Restaurant</h1>
+<%= link_to 'Edit Restaurant', edit_restaurant_path %>
+<h4><%= @restaurant.name %></h4>
+<ul>
+  <li>Name: <%= @restaurant.name %></li>
+  <li>Opening Hour: <%= @restaurant.opening_hour.strftime("%I:%M %p") %></li>
+  <li>Closing Hour: <%= @restaurant.closing_hour.strftime("%I:%M %p") %></li>
+  <li>Max Capacity: <%= @restaurant.max_capacity %></li>
+</ul>
