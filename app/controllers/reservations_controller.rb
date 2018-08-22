@@ -18,7 +18,6 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to root_path
     else
-      flash.now[:notice] = @reservation.errors.full_messages
       render :new
     end
   end

@@ -11,3 +11,5 @@
   <li>Closing Hour: <%= @restaurant.closing_hour.strftime("%I:%M %p") %></li>
   <li>Max Capacity: <%= @restaurant.max_capacity %></li>
 </ul>
+
+<%= link_to 'Make a Reservation', new_restaurant_reservation_path(@restaurant.id) %>
