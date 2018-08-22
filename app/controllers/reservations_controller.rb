@@ -2,18 +2,17 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
-    render :new_restaurant_reservation_path
   end
 
   def create
     @reservation = Reservation.new(
       date: params[:reservation][:date],
       time: params[:reservation][:time],
-      party_size: params[:reservation][:party_size]
+      party_size: params[:reservation][:party_size],
+      user_id: current_user.id
     )
 
     if @reservation.save
-      session[:user_id] = @reservation.id
       redirect_to root_path
     else
       flash.now[:alert] = @reservation.errors.full_messages
