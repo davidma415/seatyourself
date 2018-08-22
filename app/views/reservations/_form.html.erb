@@ -1,21 +1,21 @@
- <%= form_for(reservation, url: new_restaurant_reservation_path(reservation)) do |f| %>
+<%= form_for(reservation, url: '/restaurants/:restaurant_id/reservations') do |f| %>
+
+ <div>
+   <%= f.label :date %>
+   <%= f.date_field :date %>
+ </div>
 
   <div>
-    <%= f.label :date %>
-    <%= f.date_field :date %>
-  </div>
+   <%= f.label :time %>
+   <%= f.time_field :time %>
+ </div>
 
-   <div>
-    <%= f.label :time %>
-    <%= f.time_field :time %>
-  </div>
+  <div>
+   <%= f.label :party_size %>
+   <%= f.number_field :party_size %>
+ </div>
 
-   <div>
-    <%= f.label :party_size %>
-    <%= f.number_field :party_size %>
-  </div>
-
-   <div>
-    <%= f.submit "Save reservation" %>
-  </div>
+  <div>
+   <%= f.submit "Save reservation" %>
+ </div>
 <% end %>
