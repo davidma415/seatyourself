@@ -6,6 +6,6 @@ resources :reservations
 end
 resources :sessions, only: [:new, :create, :destroy]
 
-root 'restaurant#index'
+root 'restaurants#index'
 
 end
