@@ -5,7 +5,7 @@ resources :restaurants do
   resources :reservations, only: [:index, :new, :create]
 end
 resources :reservations, only: [:show, :edit, :update, :destroy]
-resources :sessions, only: [:new, :create]
+resources :sessions, only: [:new, :create, :destroy]
 
 root 'restaurant#index'
 
