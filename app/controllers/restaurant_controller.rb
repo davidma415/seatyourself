@@ -36,8 +36,7 @@ class RestaurantController < ApplicationController
       redirect_to restaurant_path
     else
       render :edit
-
-
+    end
   end
 
 
