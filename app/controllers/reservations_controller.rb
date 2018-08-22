@@ -23,7 +23,8 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    @reservation = Reservation.all
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @reservations = Reservation.where(restaurant_id: @restaurant.id)
   end
 
   def edit

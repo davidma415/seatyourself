@@ -13,3 +13,9 @@
 </ul>
 
 <%= link_to 'Make a Reservation', new_restaurant_reservation_path(@restaurant.id) %>
+
+<% if current_user %>
+  <% if current_user.id == @restaurant.user_id  %>
+    <%= link_to 'View Reservations', restaurant_reservations_path(@restaurant.id) %>
+  <% end %>
+<% end %>
