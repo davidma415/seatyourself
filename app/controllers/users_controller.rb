@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @resos = @user.reservations
   end
 
   def update

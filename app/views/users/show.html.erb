@@ -6,3 +6,25 @@
   <li>Last Name: <%= @user.last_name %></li>
   <li>Email: <%= @user.email %></li>
 </ul>
+
+<h3>Reservations</h3>
+<% @resos.each do |r| %>
+  <p>
+    <ul>
+      <li>
+        <%= r.restaurant.name %>
+      </li>
+      <li>
+        <%= r.time %>
+      </li>
+      <li>
+        <%= r.date %>
+      </li>
+      <li>
+        <%= r.party_size %>
+      </li>
+    </ul>
+  </p>
+  <br>
+  <br>
+<% end %>
