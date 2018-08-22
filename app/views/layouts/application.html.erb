@@ -6,12 +6,21 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
+
+<header>
+  <nav class="navbar">
+    <%= link_to 'Restaurants', restaurants_path %> |
+    <% if current_user %>
+      <%= link_to 'Profile', user_path %> |
+      <%= link_to 'Logout', session_path("current"), :method => :delete %>
+    <% else %>
+      <%= link_to 'Login', new_session_path %> | 
+      <%= link_to 'Register', new_user_path %>
+    <% end %>
+
+  </nav>
+</header>
 <body>
-<nav>
-  <p>
-    links will go here
-  </p>
-</nav>
 <% if flash[:notice] %>
   <div class="notice">
     <%= flash[:notice] %>
