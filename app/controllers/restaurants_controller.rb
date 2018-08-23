@@ -49,6 +49,7 @@ class RestaurantsController < ApplicationController
   end
 
   def verify_owner_of_restaurant
+    @restaurant = Restaurant.find(params[:id])
     unless current_user.id == @restaurant.user_id
       flash[:notice] = "You do not own this restaurant. Please login as the owner."
       redirect_to new_session_url
