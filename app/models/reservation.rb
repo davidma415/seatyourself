@@ -15,6 +15,10 @@ class Reservation < ApplicationRecord
       errors.add(:time, "is not when the restaurant is open.")
     end
   end
+
+  def self.in_next_week
+    Reservation.where("date > ? AND date < ? ", Date.today, 7.days.from_now)
+  end
   belongs_to :user
   belongs_to :restaurant
 end
