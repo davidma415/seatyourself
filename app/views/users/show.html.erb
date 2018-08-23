@@ -15,10 +15,10 @@
         <%= r.restaurant.name %>
       </li>
       <li>
-        <%= r.time %>
+        <%= r.date %>
       </li>
       <li>
-        <%= r.date %>
+        <%= r.time.strftime("%I:%M%p") %>
       </li>
       <li>
         <%= r.party_size %>
