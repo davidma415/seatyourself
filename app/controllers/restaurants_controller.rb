@@ -13,6 +13,8 @@ class RestaurantsController < ApplicationController
       opening_hour: params[:restaurant][:opening_hour],
       closing_hour: params[:restaurant][:closing_hour],
       max_capacity: params[:restaurant][:max_capacity],
+      max_party_size: params[:restaurant][:max_party_size],
+      min_party_size: params[:restaurant][:min_party_size],
       user_id: current_user.id
     )
 

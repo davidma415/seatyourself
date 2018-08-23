@@ -7,7 +7,22 @@
   <li>Email: <%= @user.email %></li>
 </ul>
 
-<h3>Reservations</h3>
+<h3>My Restaurant Reservations</h3>
+<% if @restaurants.empty? == false %>
+  <% @restaurants.each do |rest| %>
+    <h3><%= rest.name %></h3>
+    <% rest.reservations.in_next_week.each do |res| %>
+      <div class="restaurant-reservation">
+        <h4><%= res.date %></h4>
+        <li><%= res.time.strftime("%I:%M%p") %></li>
+        <li><%= User.find(res.user_id).first_name %> <%= User.find(res.user_id).last_name %></li>
+        <li>Party Size: <%= res.party_size %></li>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h3>My Reservations</h3>
 <% @resos.each do |r| %>
   <p>
     <ul>
