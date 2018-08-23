@@ -25,5 +25,9 @@ class Reservation < ApplicationRecord
       errors.add(:party_size, " is not within the range of allowable party sizes.")
     end
   end
+  
+  def self.in_next_week
+    Reservation.where("date > ? AND date < ? ", Date.today, 7.days.from_now)
+  end
 
 end
