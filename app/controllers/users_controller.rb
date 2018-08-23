@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
   def show
     @resos = @user.reservations
+    @restaurants = @user.restaurants
   end
 
   def update
