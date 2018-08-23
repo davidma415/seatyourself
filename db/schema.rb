@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_08_23_153616) do
 
+
   create_table "reservations", force: :cascade do |t|
     t.date "date"
     t.time "time"
@@ -32,6 +33,8 @@ ActiveRecord::Schema.define(version: 2018_08_23_153616) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "address"
+    t.string "price_range"
     t.integer "max_party_size"
     t.integer "min_party_size"
     t.index ["user_id"], name: "index_restaurants_on_user_id"

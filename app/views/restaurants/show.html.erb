@@ -8,6 +8,12 @@
 <h4><%= @restaurant.name %></h4>
 <ul>
   <li>Name: <%= @restaurant.name %></li>
+<% if @restaurant.address != nil %>
+  <li>Address: <%= @restaurant.address %></li>
+<% end %>
+<% if @restaurant.price_range != nil %>
+  <li>Price Range: <%= @restaurant.price_range %></li>
+<% end %>
   <li>Opening Hour: <%= @restaurant.opening_hour.strftime("%I:%M %p") %></li>
   <li>Closing Hour: <%= @restaurant.closing_hour.strftime("%I:%M %p") %></li>
   <li>Max Capacity: <%= @restaurant.max_capacity %></li>

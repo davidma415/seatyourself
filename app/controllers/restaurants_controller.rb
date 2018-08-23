@@ -8,6 +8,8 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(
       name: params[:restaurant][:name],
+      address: params[:restaurant][:address],
+      price_range: params[:restaurant][:price_range],
       opening_hour: params[:restaurant][:opening_hour],
       closing_hour: params[:restaurant][:closing_hour],
       max_capacity: params[:restaurant][:max_capacity],
