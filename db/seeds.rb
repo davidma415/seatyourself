@@ -14,8 +14,8 @@ User.create(first_name: "Joey", last_name: "Saha", username: "JSA", email: "jsa@
 User.create(first_name: "Tyler", last_name: "Palef", username: "TPA", email: "tpa@gmail.com", password: "123", password_confirmation: "123")
 
 
-Restaurant.create(name: "BK", opening_hour: "2000-01-01 08:30:00", closing_hour: "2000-01-01 11:30:00", max_capacity: 45, user_id: 1)
-Restaurant.create(name: "McD", opening_hour: "2000-01-01 08:30:00", closing_hour: "2000-01-01 11:30:00", max_capacity: 35, user_id: 2)
+Restaurant.create(name: "BK", opening_hour: "2000-01-01 08:30:00", closing_hour: "2000-01-01 11:30:00", max_capacity: 45, address: "123 Apple Street", price_range: "$", user_id: 1)
+Restaurant.create(name: "McD", opening_hour: "2000-01-01 08:30:00", closing_hour: "2000-01-01 11:30:00", max_capacity: 35, address: "22 Jump Street", price_range: "$$", user_id: 2)
 Restaurant.create(name: "RL", opening_hour: "2000-01-01 08:30:00", closing_hour: "2000-01-01 11:30:00", max_capacity: 35, user_id: 1)
 
 
