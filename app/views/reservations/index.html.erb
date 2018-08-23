@@ -3,7 +3,7 @@
   <ul>
     <li><%= r.user.first_name %> <%= r.user.last_name %></li>
     <li><%= r.date %></li>
-    <li><%= r.time %></li>
+    <li><%= r.time.strftime("%I:%M%p") %></li>
     <li><%= r.party_size %></li>
   </ul>
 <% end %>

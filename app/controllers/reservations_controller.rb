@@ -16,6 +16,7 @@ class ReservationsController < ApplicationController
     )
 
     if @reservation.save
+      flash[:notice] = "Your reservation at #{@restaurant.name} has been made for #{@reservation.date} at #{@reservation.time.strftime("%I:%M%p")} for #{@reservation.party_size}."
       redirect_to root_path
     else
       render :new
