@@ -23,6 +23,9 @@
       <li>
         <%= r.party_size %>
       </li>
+      <li>
+        <%= link_to("Delete Reservation", reservation_path(r.id), method: :delete, data: {confirm: "Are you sure you want to delete this reservation?"})  %>
+      </li>
     </ul>
   </p>
   <br>

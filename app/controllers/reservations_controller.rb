@@ -33,6 +33,7 @@ class ReservationsController < ApplicationController
   end
 
   def update
+    flash[:notice] = "Your reservation at #{@restaurant.name} has been changed and is now on #{@reservation.date} at #{@reservation.time.strftime("%I:%M%p")} for #{@reservation.party_size}."
     @reservation = Reservation.find(params[:id])
     @reservation.date = params[:reservation][:date]
     @reservation.time = params[:reservation][:time]
@@ -43,6 +44,13 @@ class ReservationsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    flash[:notice] = "You've successfully deleted a reservation."
+    redirect_to user_path
   end
 
 end
